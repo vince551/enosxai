@@ -1590,3 +1590,115 @@ button {
     right: 0.4rem !important;
   }
 }
+
+
+/* Hard containment pass: prevent intrinsic content sizes from escaping cards. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  /* Flex/grid children default to min-width:auto; explicitly allow them to shrink. */
+  .neon-dashboard-stage *,
+  .phone-command-shell *,
+  .connector-picker-panel *,
+  .prose-crimson,
+  .prose-crimson * {
+    min-width: 0;
+  }
+
+  .prose-crimson {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .prose-crimson p,
+  .prose-crimson li,
+  .prose-crimson blockquote,
+  .prose-crimson h1,
+  .prose-crimson h2,
+  .prose-crimson h3,
+  .prose-crimson h4,
+  .prose-crimson strong,
+  .prose-crimson em {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .prose-crimson table {
+    display: block !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    table-layout: auto;
+    white-space: normal;
+  }
+
+  .prose-crimson th,
+  .prose-crimson td {
+    max-width: 14rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .prose-crimson pre {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre;
+    overflow-wrap: normal;
+  }
+
+  .prose-crimson pre code {
+    display: block;
+    width: max-content;
+    min-width: 0;
+    max-width: none;
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .prose-crimson img,
+  .prose-crimson video,
+  .prose-crimson iframe,
+  .prose-crimson svg,
+  .prose-crimson canvas {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .prose-crimson ul,
+  .prose-crimson ol {
+    padding-left: 1.25rem;
+  }
+
+  .prose-crimson a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  /* Keep connector row labels and action controls in separate available space. */
+  .connector-picker-panel [role="option"] {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .connector-picker-panel [role="option"] > span:nth-of-type(2) {
+    flex: 1 1 7rem;
+  }
+
+  .connector-picker-panel [role="option"] > button {
+    flex: 0 0 auto;
+  }
+}
