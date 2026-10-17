@@ -1494,3 +1494,99 @@ button {
     max-width: min(100%, 48rem);
   }
 }
+
+
+/* Mobile fixes for the AI mode menu, connector picker, and generated answers. */
+@media (max-width: 767px) {
+  .ai-mode-menu {
+    left: 0;
+    width: min(280px, calc(100vw - 1.5rem));
+    max-width: calc(100vw - 1.5rem);
+    max-height: min(60dvh, 26rem);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .connector-picker-panel {
+    position: fixed !important;
+    inset-inline: max(0.625rem, env(safe-area-inset-left)) max(0.625rem, env(safe-area-inset-right)) !important;
+    left: max(0.625rem, env(safe-area-inset-left)) !important;
+    right: max(0.625rem, env(safe-area-inset-right)) !important;
+    bottom: calc(5.25rem + env(safe-area-inset-bottom)) !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: min(68dvh, 34rem) !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .connector-picker-panel > .connector-picker-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .connector-picker-panel [role="option"] {
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .connector-picker-panel [role="option"] > button {
+    min-height: 2.25rem;
+  }
+
+  /* Keep rich AI responses readable without widening the chat viewport. */
+  .prose-crimson,
+  .prose-crimson > *,
+  .prose-crimson p,
+  .prose-crimson li,
+  .prose-crimson blockquote {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .prose-crimson table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .prose-crimson pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre;
+    overflow-wrap: normal;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .prose-crimson img,
+  .prose-crimson video,
+  .prose-crimson iframe,
+  .prose-crimson canvas,
+  .prose-crimson svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .prose-crimson a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 380px) {
+  .connector-picker-panel {
+    inset-inline: 0.4rem !important;
+    left: 0.4rem !important;
+    right: 0.4rem !important;
+  }
+}
