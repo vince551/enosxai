@@ -229,7 +229,7 @@ export default function ConnectorPicker({
                 )}
               </div>
 
-              <div className="mt-3 flex items-center gap-1.5 overflow-x-auto pb-0.5">
+              <div className="mt-3 flex flex-wrap items-center gap-1.5 pb-0.5">
                 <SlidersHorizontal
                   size={12}
                   className="shrink-0 text-white/35"
@@ -241,7 +241,7 @@ export default function ConnectorPicker({
                       type="button"
                       key={filter}
                       onClick={() => setKindFilter(filter)}
-                      className="rounded-lg px-2.5 py-1 text-[10px] font-semibold whitespace-nowrap transition-all hover:border-white/20 hover:text-white"
+                      className="shrink-0 rounded-lg px-2.5 py-2 text-xs leading-tight font-semibold whitespace-nowrap transition-all hover:border-white/20 hover:text-white"
                       style={{
                         background: active
                           ? `rgba(${config.accentRgb}, 0.17)`
@@ -287,7 +287,7 @@ export default function ConnectorPicker({
                         setQuery("");
                         setKindFilter("All");
                       }}
-                      className="w-full flex items-center gap-3 rounded-xl px-3 py-2 text-left transition-all hover:translate-x-0.5 hover:bg-white/[0.07]"
+                      className="w-full grid grid-cols-[40px_minmax(0,1fr)_auto] items-center gap-3 rounded-xl px-3 py-3 text-left transition-colors hover:bg-white/[0.07]"
                       style={{
                           background: selected
                           ? `linear-gradient(90deg, rgba(${config.accentRgb}, 0.14), rgba(255,255,255,0.045))`
