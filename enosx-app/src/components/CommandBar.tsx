@@ -372,6 +372,9 @@ export default function CommandBar({
                 {/* Compact textarea */}
               <textarea
                 ref={textareaRef}
+                aria-label="Message ENOSX AI"
+                autoComplete="off"
+                enterKeyHint="send"
                 value={value}
                 onChange={(e) => {
                   const nextValue = e.target.value;
