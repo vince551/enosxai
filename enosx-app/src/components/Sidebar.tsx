@@ -328,6 +328,7 @@ export default function Sidebar({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex"
+          role="presentation"
           onClick={onMobileClose}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
@@ -337,20 +338,22 @@ export default function Sidebar({
             animate={{ x: 0 }}
             exit={{ x: -300 }}
             transition={{ type: "spring", stiffness: 320, damping: 32 }}
-            className="relative h-full w-72 flex-shrink-0"
+            className="relative h-[100dvh] w-[min(18rem,88vw)] max-w-[88vw] flex-shrink-0 pb-[env(safe-area-inset-bottom)]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={onMobileClose}
-              className="absolute top-4 right-3 z-50 w-8 h-8 rounded-full flex items-center justify-center border transition-all"
+              type="button"
+              aria-label="Close navigation menu"
+              className="absolute top-[max(0.75rem,env(safe-area-inset-top))] right-3 z-50 min-h-10 min-w-10 rounded-full flex items-center justify-center border transition-all touch-manipulation"
               style={{
                 background: "rgba(0,0,0,0.5)",
                 borderColor: `rgba(${config.accentRgb}, 0.2)`,
                 color: config.textMuted,
               }}
             >
-              <X size={12} />
+              <X size={16} />
             </button>
             {sidebarContent}
           </motion.div>
