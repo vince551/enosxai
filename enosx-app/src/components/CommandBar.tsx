@@ -284,8 +284,8 @@ export default function CommandBar({
             </AnimatePresence>
 
             {/* AI Mode selector — single compact tab with dropdown */}
-            <div className="flex items-center gap-2">
-              <div className="relative" ref={modeRef}>
+            <div className="phone-composer-controls flex items-center gap-2 min-w-0">
+              <div className="relative min-w-0" ref={modeRef}>
                 <motion.button
                   type="button"
                   whileHover={{ scale: 1.03 }}
@@ -368,7 +368,7 @@ export default function CommandBar({
 	              </AnimatePresence>
 	
 	              {/* Textarea and buttons container */}
-	              <div className="flex items-end gap-2">
+	              <div className="phone-composer-input-row flex items-end gap-2 min-w-0">
                 {/* Compact textarea */}
               <textarea
                 ref={textareaRef}
@@ -392,7 +392,7 @@ export default function CommandBar({
                 }
                 rows={1}
                 disabled={disabled && !isListening}
-                className="flex-1 bg-transparent outline-none resize-none text-sm leading-snug"
+                className="phone-composer-textarea flex-1 min-w-0 bg-transparent outline-none resize-none text-sm leading-snug"
                 style={{
                   color: config.text,
                   caretColor: config.accent,
