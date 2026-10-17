@@ -62,34 +62,36 @@ export default function PhoneChatLayout({
   const { config } = useTheme();
 
   return (
-    <div className="flex flex-col h-full w-full relative bg-black overflow-hidden">
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-col relative bg-black overflow-hidden">
       {/* Mobile Header */}
-      <header className="h-14 flex items-center justify-between px-4 border-b border-white/10 z-20 bg-black/50 backdrop-blur-md">
+      <header className="flex min-h-14 shrink-0 items-center justify-between gap-2 px-3 sm:px-4 pt-[env(safe-area-inset-top)] border-b border-white/10 z-20 bg-black/50 backdrop-blur-md">
         <button
           type="button"
           onClick={() => setIsMobileSidebarOpen(true)}
-          className="min-h-11 min-w-11 p-2 -ml-2 text-white/70 hover:text-white transition-colors touch-manipulation"
+          aria-label="Open chat history and navigation"
+          className="flex min-h-11 min-w-11 shrink-0 items-center justify-center p-2 -ml-1 text-white/70 hover:text-white transition-colors touch-manipulation"
         >
           <Menu size={24} />
         </button>
-        <div className="text-sm font-bold tracking-tighter text-white/90">
+        <div className="min-w-0 truncate text-sm font-bold tracking-tighter text-white/90">
           ENOSX <span className="text-cyan-400">AI</span>
         </div>
         <button
           type="button"
           onClick={createNewChat}
-          className="min-h-11 min-w-11 p-2 -mr-2 text-white/70 hover:text-white transition-colors touch-manipulation"
+          aria-label="Start a new chat"
+          className="flex min-h-11 min-w-11 shrink-0 items-center justify-center p-2 -mr-1 text-white/70 hover:text-white transition-colors touch-manipulation"
         >
           <Plus size={24} />
         </button>
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 min-h-0 overflow-y-auto relative z-10 px-4 py-4 scrollbar-hide">
+      <main className="relative z-10 min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-3 py-4 sm:px-4 scrollbar-hide">
         {messages.length === 0 ? (
           <WelcomeScreen onSuggestion={(p: string) => handleSend(p)} />
         ) : (
-          <div className="flex flex-col gap-6 pb-32">
+          <div className="flex min-w-0 flex-col gap-5 pb-6 sm:gap-6 sm:pb-8">
             {messages.map((msg, idx) => (
               <MessageBubble
                 key={msg.id}
@@ -106,7 +108,7 @@ export default function PhoneChatLayout({
       </main>
 
       {/* Mobile Command Bar */}
-      <div className="phone-composer-dock relative z-30 shrink-0 border-t border-white/10 bg-black/80 px-3 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl">
+      <div className="phone-composer-dock relative z-30 w-full min-w-0 shrink-0 border-t border-white/10 bg-black/80 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 sm:px-3 backdrop-blur-xl">
         <CommandBar
           onSend={handleSend}
           isLoading={isLoading}
