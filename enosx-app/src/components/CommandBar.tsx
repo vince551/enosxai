@@ -222,7 +222,7 @@ export default function CommandBar({
                 ? { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
                 : { duration: 0.3 }
             }
-            className={`phone-command-shell flex flex-col gap-0.5 rounded-2xl px-3 py-1 transition-all duration-300 ${isListening ? 'shadow-[0_0_20px_rgba(0,242,255,0.2)]' : ''} rainbow-glow rainbow-glow-border`}
+            className={`phone-command-shell relative flex flex-col gap-0.5 rounded-2xl px-3 py-1 transition-all duration-300 ${isListening ? 'shadow-[0_0_20px_rgba(0,242,255,0.2)]' : ''} rainbow-glow rainbow-glow-border`}
             style={{
               background: `rgba(12,12,16,${wallpaperSettings.panelOpacity})`,
               backdropFilter: `blur(${wallpaperSettings.blurAmount}px)`,
@@ -324,14 +324,15 @@ export default function CommandBar({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -4, scale: 0.97 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute bottom-full mb-2 left-0 flex flex-col gap-1.5 p-2 rounded-xl z-50"
+                    className="ai-mode-menu absolute bottom-full mb-2 left-0 flex max-h-[calc(100dvh-8rem)] flex-col gap-1.5 overflow-y-auto p-2 rounded-xl z-50"
                     style={{
                       background: "rgba(12,12,18,0.97)",
                       border: "1px solid rgba(255,255,255,0.08)",
                       backdropFilter: "blur(16px)",
                       WebkitBackdropFilter: "blur(16px)",
                       boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-                      minWidth: 250,
+                      width: "min(280px, calc(100vw - 24px))",
+                      minWidth: 0,
                     }}
                   >
                     {AI_MODES.map((mode) => (
