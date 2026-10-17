@@ -317,10 +317,10 @@ export default function MessageBubble({
       className={`flex min-w-0 gap-3 ${isUser ? "flex-row-reverse" : "flex-row"}`}
     >
       {/* Flat message surface: media and text are not nested inside chat bubbles. */}
-      <div className={`flex min-w-0 max-w-[90%] flex-col gap-1 ${isUser ? "items-end" : "items-start"}`}>
+      <div className={`flex w-full min-w-0 max-w-[90%] flex-col gap-1 ${isUser ? "items-end" : "items-start"}`}>
         <motion.div
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className={`relative w-full transition-all duration-300 ${!isUser && (isEmpty || isStreaming) ? 'rainbow-glow' : ''}`}
+          className={`relative w-full min-w-0 max-w-full transition-all duration-300 ${!isUser && (isEmpty || isStreaming) ? 'rainbow-glow' : ''}`}
           style={{
             background: "transparent",
             border: "0",
@@ -334,9 +334,9 @@ export default function MessageBubble({
           {isEmpty ? (
             <span className="sr-only" role="status">Assistant response is being prepared.</span>
           ) : (
-            <div className="relative">
+            <div className="relative w-full min-w-0 max-w-full">
               {isUser ? (
-                <div className="flex flex-col gap-3">
+                <div className="flex w-full min-w-0 max-w-full flex-col gap-3">
                   {/* User attachments — images are grouped into one browsable collection */}
                   {message.attachments && message.attachments.length > 0 && (
                     <MediaAttachmentList attachments={message.attachments} />
@@ -349,7 +349,7 @@ export default function MessageBubble({
                   </div>
                 </div>
               ) : (
-                <div className="flex flex-col gap-3">
+                <div className="flex w-full min-w-0 max-w-full flex-col gap-3">
                   {/* Assistant media attachments */}
                   {message.attachments && message.attachments.length > 0 && (
                     <MediaAttachmentList attachments={message.attachments} />
