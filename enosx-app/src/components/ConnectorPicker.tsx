@@ -146,7 +146,7 @@ export default function ConnectorPicker({
             transition={{ duration: 0.18 }}
             role="dialog"
             aria-label="Connector picker"
-            className="absolute bottom-full left-0 mb-2 z-[60] overflow-hidden rounded-2xl"
+            className="connector-picker-panel absolute bottom-full left-0 mb-2 z-[60] overflow-hidden rounded-2xl"
             style={{
               width: "min(420px, calc(100vw - 32px))",
               background: "linear-gradient(145deg, rgba(24,24,34,0.98), rgba(10,10,16,0.98))",
@@ -263,7 +263,7 @@ export default function ConnectorPicker({
             </div>
 
             <div
-              className="max-h-64 overflow-y-auto p-2"
+              className="connector-picker-list max-h-64 min-h-0 overflow-y-auto overscroll-contain p-2"
               role="listbox"
               aria-label="Available connectors"
               aria-multiselectable="true"
