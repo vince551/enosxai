@@ -1232,3 +1232,95 @@ button {
     height: 100dvh;
   }
 }
+
+
+/* Mobile polish for the existing composer and navigation drawer.
+   These rules only adjust spacing, wrapping and sizing. */
+.phone-command-shell {
+  min-width: 0;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.phone-command-shell > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .phone-composer-dock {
+    width: 100%;
+    max-width: 100%;
+    padding-left: max(0.5rem, env(safe-area-inset-left));
+    padding-right: max(0.5rem, env(safe-area-inset-right));
+  }
+
+  .phone-composer-dock > div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .phone-command-shell {
+    width: 100%;
+    border-radius: 1.15rem;
+    padding: 0.5rem 0.65rem;
+    gap: 0.5rem;
+  }
+
+  .phone-command-shell .flex.items-center.gap-2 {
+    flex-wrap: wrap;
+    row-gap: 0.45rem;
+  }
+
+  .phone-command-shell textarea {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .phone-command-shell button {
+    flex-shrink: 0;
+  }
+
+  .phone-command-shell [role="listbox"],
+  .phone-command-shell [role="menu"],
+  .phone-command-shell [data-radix-popper-content-wrapper] {
+    max-width: calc(100vw - 1.5rem);
+  }
+
+  /* Keep the mobile navigation drawer within the viewport and independently scrollable. */
+  .phone-composer-dock ~ div[class*="fixed"][class*="z-50"] {
+    max-width: min(300px, 86vw);
+    overflow: hidden;
+  }
+
+  .phone-composer-dock ~ div[class*="fixed"][class*="z-50"] aside {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .neon-dashboard-sidebar {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .neon-dashboard-sidebar > div {
+    min-width: 0;
+  }
+
+  .neon-dashboard-nav {
+    min-height: 2.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .phone-command-shell {
+    padding: 0.45rem 0.5rem;
+  }
+
+  .phone-command-shell .text-\[11px\] {
+    font-size: 10px;
+  }
+}
