@@ -1125,3 +1125,110 @@
 @keyframes story-scan { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: 1; } 88% { opacity: .65; } 100% { transform: translateY(475px); opacity: 0; } }
 @media (max-width: 900px) { .visual-story-hero { grid-template-columns: 1fr; } .story-metric-cluster { max-width: 600px; } }
 @media (max-width: 700px) { .visual-story-page { padding: 18px 12px 34px; } .visual-story-header { align-items: flex-start; flex-direction: column; } .visual-story-workbench { grid-template-columns: 1fr; } .story-beat-rail { min-height: auto; } .story-beat-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; } .story-beat { min-height: 110px; padding: 10px 7px; } .story-beat-copy small { display: none; } .story-stage { min-height: 410px; padding: 18px 12px 16px; } .story-chart { height: 285px; } .story-stage-toolbar { align-items: flex-start; flex-direction: column; } .story-data-editor { flex-direction: column; } }
+
+
+/* ==========================================================================
+   Responsive safety layer — layout-only overrides.
+   Preserves existing components, navigation, colours, and interactions.
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+@media (max-width: 767px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  #root {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* Prevent long content and nested flex children from widening the viewport. */
+  main,
+  aside,
+  section,
+  article,
+  [role="main"] {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  pre,
+  code {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-wrap: anywhere;
+  }
+
+  input,
+  textarea,
+  select {
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  /* Comfortable touch targets without changing button appearance or behaviour. */
+  button,
+  [role="button"],
+  a[href] {
+    touch-action: manipulation;
+  }
+
+  /* Respect narrow screens and mobile safe areas. */
+  .container {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+  }
+
+  /* Keep dialogs and popovers inside the visible mobile viewport. */
+  [role="dialog"],
+  [data-radix-popper-content-wrapper] {
+    max-width: calc(100vw - 1rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+}
+
+@media (max-height: 560px) and (max-width: 767px) {
+  #root {
+    height: 100dvh;
+  }
+}
