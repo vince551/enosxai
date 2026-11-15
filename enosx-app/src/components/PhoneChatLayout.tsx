@@ -1,5 +1,4 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Plus } from "lucide-react";
 import Sidebar from "./Sidebar";
 import MessageBubble from "./MessageBubble";
@@ -164,42 +163,23 @@ export default function PhoneChatLayout({
         />
       </div>
 
-      {/* Mobile Sidebar Overlay */}
-      <AnimatePresence>
-        {isMobileSidebarOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileSidebarOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-            />
-            <motion.div
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 bottom-0 w-[80%] max-w-[300px] z-50 bg-[#0c0c10] border-r border-white/10"
-            >
-              <Sidebar
-                conversations={conversations}
-                activeId={activeId}
-                onSelect={(id) => { setActiveId(id); setIsMobileSidebarOpen(false); }}
-                onNew={() => { createNewChat(); setIsMobileSidebarOpen(false); }}
-                onDelete={deleteConversation}
-                collapsed={false}
-                isMobileOpen={true}
-                onMobileClose={() => setIsMobileSidebarOpen(false)}
-                onSettingsClick={() => {
-                  setIsMobileSidebarOpen(false);
-                  onSettingsClick?.();
-                }}
-              />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* Sidebar owns its own backdrop and drawer; avoid rendering a second overlay. */}
+      {isMobileSidebarOpen && (
+        <Sidebar
+          conversations={conversations}
+          activeId={activeId}
+          onSelect={(id) => { setActiveId(id); setIsMobileSidebarOpen(false); }}
+          onNew={() => { createNewChat(); setIsMobileSidebarOpen(false); }}
+          onDelete={deleteConversation}
+          collapsed={false}
+          isMobileOpen
+          onMobileClose={() => setIsMobileSidebarOpen(false)}
+          onSettingsClick={() => {
+            setIsMobileSidebarOpen(false);
+            onSettingsClick?.();
+          }}
+        />
+      )}
     </div>
   );
 }
