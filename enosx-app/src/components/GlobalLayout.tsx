@@ -31,7 +31,7 @@ export function GlobalLayout({ children }: GlobalLayoutProps) {
 
   return (
     <div
-      className="neon-dashboard-stage w-screen h-dvh overflow-hidden relative"
+      className="neon-dashboard-stage w-full max-w-full h-dvh overflow-hidden overflow-x-hidden relative"
       style={{
         backgroundColor: "#0a0a0a",
       }}
