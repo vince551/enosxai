@@ -271,6 +271,15 @@
     .container { padding-left: 2rem; padding-right: 2rem; max-width: 1280px; }
   }
 
+  /* Tablet widths need compact gutters and should not inherit desktop max-width. */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+      max-width: 100%;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
+
   /* ── Glassmorphism Panel ── */
   .glass-panel {
     background: rgba(255, 255, 255, 0.04);
@@ -713,16 +722,15 @@
       padding-bottom: 0;
     }
 
-    .phone-composer-dock .phone-command-shell {
+    /* Style the actual composer root rendered by CommandBar.tsx. */
+    .phone-composer-dock .enosx-composer {
+      width: 100%;
       max-width: none;
+      min-width: 0;
       border-radius: 20px;
       padding: 8px 10px 10px;
       background: rgba(14, 15, 22, 0.96) !important;
       box-shadow: 0 10px 36px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-
-    .phone-composer-dock .phone-command-shell > div:last-child {
-      gap: 6px;
     }
 
     .phone-composer-dock .enosx-composer__tools {
