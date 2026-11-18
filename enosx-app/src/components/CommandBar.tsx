@@ -386,6 +386,7 @@ export default function CommandBar({
           />
 
           <div className="enosx-composer__tools">
+            <div className="enosx-composer-model"><AIModePicker aiMode={aiMode} onChange={(mode) => onAiModeChange?.(mode)} /></div>
             <input
               ref={fileInputRef}
               type="file"

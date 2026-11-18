@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu, Plus } from "lucide-react";
+import BrandMark from "./BrandMark";
 import Sidebar from "./Sidebar";
 import MessageBubble from "./MessageBubble";
 import CommandBar, { AI_MODES, type AIMode } from "./CommandBar";
@@ -71,7 +72,7 @@ export default function PhoneChatLayout({
   return (
     <div className="flex flex-col h-full w-full relative bg-black overflow-hidden">
       {/* Mobile Header */}
-      <header className="h-14 flex items-center justify-between px-4 border-b border-white/10 z-20 bg-black/50 backdrop-blur-md">
+      <header className="h-14 flex items-center justify-between px-4 border-b border-violet-400/15 z-20 bg-black/60 backdrop-blur-xl">
         <button
           type="button"
           onClick={() => setIsMobileSidebarOpen(true)}
@@ -91,7 +92,7 @@ export default function PhoneChatLayout({
         </button>
       </header>
 
-      <nav className="mobile-ai-modes flex flex-shrink-0 items-center gap-1.5 border-b border-white/10 bg-black/35 px-3 py-2" aria-label="ENOSX AI modes">
+      <nav className="mobile-ai-modes flex flex-shrink-0 items-center gap-1.5 border-b border-violet-400/15 bg-black/40 px-3 py-2" aria-label="ENOSX AI modes">
         {AI_MODES.map((mode) => {
           const selected = aiMode === mode.id;
           return (

@@ -317,7 +317,7 @@ export default function MessageBubble({
                     <MediaAttachmentList attachments={message.attachments} />
                   )}
                   <div
-                    className="text-[15px] leading-7"
+                    className="enosx-user-message-bubble text-[15px] leading-7"
                     style={{ color: config.text }}
                   >
                     {renderContentWithMedia(message.content, config.accent)}

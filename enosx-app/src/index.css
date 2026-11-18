@@ -1782,3 +1782,129 @@ body.light .enosx-composer {
   .enosx-pill { padding: 0 10px; }
   .enosx-pill__label { display: none; }
 }
+
+
+/* ENOSX AI — unified violet identity and responsive chat refresh */
+:root {
+  --enosx-accent: #8b5cf6;
+  --enosx-accent-rgb: 139, 92, 246;
+  --enosx-border: rgba(139, 92, 246, .22);
+  --enosx-glow: rgba(139, 92, 246, .28);
+  --primary: oklch(0.58 0.22 295);
+  --ring: oklch(0.58 0.22 295);
+  --sidebar-primary: oklch(0.58 0.22 295);
+}
+.manus, .dark {
+  --primary: oklch(0.58 0.22 295);
+  --ring: oklch(0.58 0.22 295);
+  --sidebar-primary: oklch(0.58 0.22 295);
+}
+.light {
+  --primary: oklch(0.54 0.23 295);
+  --ring: oklch(0.54 0.23 295);
+  --sidebar-primary: oklch(0.54 0.23 295);
+  --background: oklch(0.985 0.004 295);
+  --foreground: oklch(0.22 0.025 285);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.025 285);
+  --border: oklch(0.91 0.018 295);
+}
+html.light .neon-dashboard-stage,
+body.light .neon-dashboard-stage {
+  background: #f7f5ff !important;
+}
+.light .neon-dashboard-sidebar {
+  background: rgba(255,255,255,.94) !important;
+  border-right: 1px solid rgba(124,58,237,.12) !important;
+  box-shadow: 8px 0 32px rgba(55,35,100,.06) !important;
+}
+.light .premium-chat-header {
+  background: rgba(255,255,255,.82) !important;
+  border-bottom: 1px solid rgba(124,58,237,.12);
+  color: #242039;
+}
+.light .premium-chat-header h1 { color: #30284a !important; }
+.light .premium-chat-scroll { color: #30284a; }
+.light .premium-composer-dock {
+  background: linear-gradient(180deg, transparent 0%, rgba(247,245,255,.82) 35%, rgba(247,245,255,.98) 100%);
+}
+.light .neon-dashboard-nav:hover,
+.light .neon-dashboard-profile:hover {
+  background: rgba(124,58,237,.08) !important;
+}
+.light .enosx-composer {
+  --bar-bg: rgba(255,255,255,.96);
+  --bar-line: rgba(124,58,237,.2);
+  --bar-text: #28233c;
+  --bar-muted: #77718c;
+  --bar-chip: rgba(124,58,237,.08);
+  --bar-accent: #7c3aed;
+  --bar-send: #7c3aed;
+  --bar-send-fg: #ffffff;
+  box-shadow: 0 12px 34px rgba(55,35,100,.08);
+}
+.manus .enosx-composer, .dark .enosx-composer {
+  --bar-accent: #a78bfa;
+  --bar-send: #8b5cf6;
+  --bar-send-fg: #ffffff;
+  border-color: rgba(167,139,250,.22);
+  box-shadow: 0 16px 42px rgba(0,0,0,.22), 0 0 0 1px rgba(139,92,246,.04);
+}
+.enosx-composer:focus-within {
+  border-color: #8b5cf6 !important;
+  box-shadow: 0 0 0 3px rgba(139,92,246,.13), 0 16px 42px rgba(0,0,0,.18);
+}
+.enosx-send__go, .enosx-send__more {
+  background: #8b5cf6 !important;
+  color: #fff !important;
+}
+.enosx-send__go:hover, .enosx-send__more:hover { background: #7c3aed !important; }
+.enosx-composer-model { display: flex; align-items: center; padding: 0 3px; border-right: 1px solid var(--bar-line); margin-right: 2px; }
+.enosx-composer-model > div > button { color: var(--bar-accent) !important; font-size: 12px !important; }
+.enosx-user-message-bubble {
+  display: inline-block;
+  max-width: min(100%, 680px);
+  padding: 11px 16px;
+  border: 1px solid rgba(139,92,246,.22);
+  border-radius: 19px 19px 5px 19px;
+  background: linear-gradient(135deg, rgba(139,92,246,.18), rgba(124,58,237,.11));
+  color: var(--enosx-text) !important;
+  box-shadow: 0 6px 22px rgba(80,45,150,.08);
+}
+.light .enosx-user-message-bubble {
+  background: linear-gradient(135deg, rgba(139,92,246,.12), rgba(124,58,237,.07));
+  color: #2b2540 !important;
+  border-color: rgba(124,58,237,.18);
+}
+.premium-chat-header {
+  background: rgba(13,14,20,.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(139,92,246,.1);
+}
+.manus .neon-dashboard-sidebar {
+  background: rgba(16,14,27,.94) !important;
+  border-right: 1px solid rgba(167,139,250,.12) !important;
+}
+.manus .neon-dashboard-nav:hover,
+.manus .neon-dashboard-profile:hover {
+  background: rgba(139,92,246,.13) !important;
+}
+.manus .neon-dashboard-stage {
+  background:
+    radial-gradient(ellipse at 75% 0%, rgba(139,92,246,.12), transparent 38%),
+    radial-gradient(ellipse at 10% 90%, rgba(124,58,237,.08), transparent 34%),
+    #0d0b16 !important;
+}
+@media (max-width: 767px) {
+  .premium-chat-header { padding-left: 12px; padding-right: 12px; }
+  .premium-composer-dock { padding-left: 12px; padding-right: 12px; }
+  .enosx-composer { border-radius: 20px; padding: 13px 13px 11px; }
+  .enosx-composer__tools { gap: 5px; }
+  .enosx-icon { width: 34px; height: 34px; }
+  .enosx-pill--device .enosx-pill__label { display: none; }
+  .enosx-user-message-bubble { max-width: 88vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .enosx-composer, .premium-chat-header, .neon-dashboard-nav { transition: none !important; }
+}
