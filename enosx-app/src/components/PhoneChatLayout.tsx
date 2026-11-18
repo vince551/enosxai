@@ -7,6 +7,7 @@ import CommandBar, { AI_MODES, type AIMode } from "./CommandBar";
 import WelcomeScreen, { WelcomeSuggestions } from "./WelcomeScreen";
 import { Conversation, Message, VoiceState, type Attachment } from "@/lib/types";
 import { useTheme } from "@/contexts/ThemeContext";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 interface PhoneChatLayoutProps {
   conversations: Conversation[];
@@ -70,9 +71,9 @@ export default function PhoneChatLayout({
   const { config } = useTheme();
 
   return (
-    <div className="flex flex-col h-full w-full relative bg-black overflow-hidden">
+    <div className="premium-phone-shell flex flex-col h-full w-full relative overflow-hidden" style={{ background: config.bg, color: config.text }}>
       {/* Mobile Header */}
-      <header className="h-14 flex items-center justify-between px-4 border-b border-violet-400/15 z-20 bg-black/60 backdrop-blur-xl">
+      <header className="premium-phone-header h-14 flex items-center justify-between px-4 z-20" style={{ background: "var(--glass-bg)", borderBottom: "1px solid var(--glass-line)", backdropFilter: "blur(24px) saturate(160%)" }}>
         <button
           type="button"
           onClick={() => setIsMobileSidebarOpen(true)}
@@ -80,9 +81,11 @@ export default function PhoneChatLayout({
         >
           <Menu size={24} />
         </button>
-        <div className="flex items-center gap-2">
-          <div className="text-sm font-bold tracking-tighter text-white/90">ENOSX <span className="text-cyan-400">AI</span></div>
+        <div className="flex min-w-0 items-center gap-2">
+          <BrandMark size={26} />
+          <div className="text-sm font-bold tracking-tight" style={{ color: config.text }}>ENOSX <span style={{ color: config.accent }}>AI</span></div>
         </div>
+        <div className="ml-auto flex items-center gap-2"><ThemeSwitcher /></div>
         <button
           type="button"
           onClick={createNewChat}
@@ -92,7 +95,7 @@ export default function PhoneChatLayout({
         </button>
       </header>
 
-      <nav className="mobile-ai-modes flex flex-shrink-0 items-center gap-1.5 border-b border-violet-400/15 bg-black/40 px-3 py-2" aria-label="ENOSX AI modes">
+      <nav className="mobile-ai-modes flex flex-shrink-0 items-center gap-1.5 px-3 py-2" aria-label="ENOSX AI modes">
         {AI_MODES.map((mode) => {
           const selected = aiMode === mode.id;
           return (
@@ -137,7 +140,7 @@ export default function PhoneChatLayout({
       </main>
 
       {/* Mobile Command Bar */}
-      <div className="phone-composer-dock relative z-30 shrink-0 border-t border-white/10 bg-black/80 px-3 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2 backdrop-blur-xl">
+      <div className="phone-composer-dock relative z-30 shrink-0 px-3 pb-[calc(0.5rem+env(safe-area-inset-bottom))] pt-2">
         {messages.length === 0 && (
           <div className="phone-welcome-suggestions px-2 pb-1">
             <WelcomeSuggestions onSuggestion={(p: string) => handleSend(p)} animateEntrance={false} />

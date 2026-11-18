@@ -58,6 +58,7 @@ import LeadCaptureDialog from "@/components/LeadCaptureDialog";
 import AdminConsoleDialog from "@/components/AdminConsoleDialog";
 import { deleteConversation as deleteCloudConversation, loadConversations, saveConversation } from "@/lib/firebaseStorage";
 import { ChevronDown, Copy, Gauge, Menu, Share2 } from "lucide-react";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { copyTranscript } from "@/lib/shareConversation";
 import { getOnlineMediaSearch, getWebsiteStudyUrl, searchOnlineMedia, studyWebsite } from "@/lib/onlineResearch";
 import {
@@ -1134,6 +1135,7 @@ ${getAdminContext()}` : ""}`,
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeSwitcher />
             <div
               role="status"
               aria-label={`${analytics.totalTokensUsed.toLocaleString()} tokens used`}
